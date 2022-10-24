@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import getToken from '../services/apiToken';
 import logo from '../trivia.png'
-import '../App.css';
+import '../styles/Login.css';
 import { actionEmail } from '../redux/actions/action';
 
 class Login extends Component {
@@ -49,45 +49,42 @@ class Login extends Component {
   render() {
     const { btnDisable } = this.state;
     return (
-      <div className="App App-header">
-        <img src={ logo } className="App-logo" alt="logo" />
+      <div className="login">
+        <img src={ logo } className="logo" alt="logo" />
         <br />
-        <form onSubmit={ this.handleSubmit }>
+        <form onSubmit={ this.handleSubmit } className="form">
           <label htmlFor="email">
-            E-mail
+            <span>E-mail</span>
             <input
               id="email"
               type="email"
               data-testid="input-gravatar-email"
               onChange={ this.handleChange }
               name="email"
+              placeholder="Informe seu email"
+              className="email"
             />
           </label>
           <br />
           <label htmlFor="name">
-            Name
+            <span>Name</span>
             <input
+              placeholder="Informe seu nome"
               id="name"
               type="text"
               data-testid="input-player-name"
               onChange={ this.handleChange }
               name="name"
+              className="name"
             />
           </label>
-          <div>
+          <div className="buttons-login">
             <button
               data-testid="btn-play"
               type="submit"
               disabled={ btnDisable }
             >
-              Play
-            </button>
-            <button
-              data-testid="btn-settings"
-              type="button"
-              onClick={ this.redirectSettings }
-            >
-              Settings
+              Jogar
             </button>
           </div>
         </form>
@@ -95,10 +92,6 @@ class Login extends Component {
     );
   }
 }
-
-// const mapDispatchToProps = (dispatch) => ({
-//   dispatch,
-// });
 
 Login.propTypes = {
   dispatch: PropTypes.func,
